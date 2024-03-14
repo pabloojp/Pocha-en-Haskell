@@ -1,0 +1,28 @@
+La Pocha es un juego de cartas que se juega con la baraja espanola. Las reglas se parecen a las del tute, es decir, es un juego de bazas pero lo importante no es obtener mas o menos bazas, sino acertar de antemano cuantas vas a ganar en cada ronda.
+
+OBJETIVO DEL JUEGO
+La pocha es un juego de apuestas. En cada ronda se reparte un numero determinado de cartas y el objetivo es acertar las bazas que vas a llevarte en cada ronda para sumar puntos. El ganador de la partida sera el que mas puntos sume al finalizar la partida.
+
+NUMERO DE JUGADORES
+En la Pocha, pueden participar un numero variable de jugadores. Nosotros vamos a implementar el codigo para una partida de 4 jugadores (3 bots y el jugador). 
+
+BARAJA DE CARTAS
+Se juega con una baraja espanola de 40 cartas.
+
+ORDEN Y VALOR DE LAS CARTAS
+El orden de las cartas en todos los palos, de mayor a menor, es el siguiente: as, tres, rey, caballo, sota, siete, seis, cinco, cuatro y dos. Las cartas no tienen valor en puntos. Solo importa el orden. 
+
+DISTRIBUCION DE LAS CARTAS
+Se hace un sorteo para determinar el jugador que le corresponde dar las cartas en primer lugar, siendo "mano" el jugador que se encuantra a su derecha. El que reparte, distribuye las cartas que corresponden a cada jugador y muestra la primera carta que NO ha sido repartida. Esta carta es la que senala el palo de triunfo (la "pinta"). En las bazas en las que se repartan todas las cartas del mazo, el que reparte ensena su ultima carta y esa carta designa el palo de triunfo.
+
+RONDAS
+La Pocha se juega a un numero determinado de rondas/manos. Primero, se juega una ronda de una carta. Despues se va aumentando el numero de cartas por baza progresivamente de una en una, hasta llegar a 10 (el maximo de cartas que se pueden repartir con 4 jugadores) y con ese numero de cartas jugamos cuatro rondas. Una vez finalizadas estas rondas, se va disminuyendo de uno en uno el numero de cartas por baza hasta llegar a una. En este punto, se da la opcion de terminar la partida o jugar una "subasta". En la subasta se reparten todas las cartas pero no se muestra ninguna "pinta". Una vez que los jugadores ven sus cartas, empieza la subasta. Esto consiste en que si cada uno eligiese el palo del triunfo que mejor le conveniese, cual seria la mayor apuesta de cada jugador? El que diga el numero mas alto, gana la subasta y elige el palo del triunfo. Este, a parte de ser la mano, no puede cambiar su apuesta. Sin embargo, el resto de jugadores tienen que recalcular sus apuestas.
+
+PREVISIONES Y PETICIONES
+Cada una de las rondas, consta de tantas bazas como cartas tenga cada jugador. En cada una de las rondas, antes de jugar las cartas, cada jugador indica cuantas bazas cree que va a llevarse en esa ronda concreta, empezando la "mano". Una particularidad importante es que el ultimo en decir el numero de bazas que cree que se va a llevar (el que reparte) nunca puede decir que se va a llevar un numero de bazas tal que sumado a los numeros anunciados por sus rivales sumen el numero de bazas totales de esa mano. Esto evita que todos los jugadores acierten con sus previsiones ya que por lo menos uno se va a equivocar. La prevision de las bazas es la base del juego ya que el objetivo no es llevarse bazas sino acertar en estas previsiones.
+
+EL CARTEO
+Inicia el juego el jugador que se encuentra a la derecha del que ha repartido, echando una carta. El jugador que sale puede echar la carta que quiera, mientras que el resto de jugadores deben seguir las siguientes reglas: A) Si el primer jugador ha salido con triunfo, se dice que ha arrastrado. El resto de los jugadores tienen la obligacion de echar triunfo, y superando la carta mas alta sobre la mesa si es posible. En caso de no tener triunfo, se echa cualquier otra carta. B) Si el primer jugador no sale con triunfo entonces: a) Todos los jugadores deben seguir el palo de inicio, y superando a la carta mas alta que haya de ese palo sobre la mesa, siempre que se pueda; b) Si un jugador no tiene ninguna carta del palo de inicio, debe echar triunfo (lo que se conoce como fallar); c) En caso de no tener ninguna carta ni del palo de inicio ni de triunfo, se puede echar cualquier carta de cualquiera de los dos palos restantes; Si un jugador ha fallado previamente, los demas tienen que seguir el palo de inicio aunque ya no es preciso que superen ninguna carta ya que no optan a ganar la baza. Si un jugador ha fallado previamente y nosotros tampoco tenemos ninguna carta del palo de inicio, solo estamos obligados a fallar si tenemos un triunfo superior al mas alto que haya sobre la mesa. En caso contrario, no se esta obligado a desperdiciar el triunfo. Gana la baza la mayor carta jugada del palo de triunfo y, en su defecto, la carta mas alta del palo de salida. Inicia la baza siguiente el jugador que gano la anterior, que jugara una carta cualquiera, continuando los demas por orden riguroso de izquierda a derecha en la forma ya explicada, hasta acabar todas las cartas.
+
+LA PUNTUACION
+Una vez que se han jugado todas las bazas de una mano, y los jugadores ya no tienen cartas, se procede al recuento de los puntos en funcion de los aciertos. Cada jugador se lleva 10 puntos si adivina el numero exacto de bazas que se iba a llevar. Ademas, los jugadores que han acertado, se llevan 5 puntos extra por cada baza ganada en esa mano. Es decir, si se acierta la prevision inicial, los puntos obtenidos son 10 + 5n, siendo n el numero de bazas ganadas. Los jugadores que no hubieran acertado, se llevan -5 puntos por cada baza de diferencia, tanto por exceso como por defecto, entre lo previsto y lo realmente llevado. 
